@@ -38,13 +38,13 @@ Safely run your code with the required permission
 ```
 Button(
     onClick = {
-      permissionRequester.requestAndExecute {
-      // Do your work with required permission
-      Toast.makeText(context, "Do your work now", Toast.LENGTH_SHORT).show()
+        permissionRequester.requestAndExecute {
+            // Do your work with required permission
+            Toast.makeText(context, "Do your work now", Toast.LENGTH_SHORT).show()
+        }
     }
-  }
 ) {
-  Text("Do work")
+    Text("Do work")
 }
 ```
 
