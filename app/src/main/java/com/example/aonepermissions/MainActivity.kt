@@ -18,7 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import com.aone.permissions.rememberLocationPermissionRequester
+import com.aone.permissions.rememberPermissionRequester
 import com.example.aonepermissions.ui.theme.AOnePermissionsTheme
 
 class MainActivity : ComponentActivity() {
@@ -48,7 +48,7 @@ class MainActivity : ComponentActivity() {
 fun Main(modifier: Modifier = Modifier) {
 
     val context = LocalContext.current
-    val permissionRequester = rememberLocationPermissionRequester(
+    val permissionRequester = rememberPermissionRequester(
         Manifest.permission.POST_NOTIFICATIONS
     )
 
@@ -61,7 +61,7 @@ fun Main(modifier: Modifier = Modifier) {
                 }
             }
         ) {
-            Text("Request permission")
+            Text("Do work")
         }
     }
 }

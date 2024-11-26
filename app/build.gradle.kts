@@ -57,5 +57,5 @@ dependencies {
 //    implementation(project(":aonepermissions"))
 
     //noinspection UseTomlInstead
-    implementation("com.github.Akshay-kumar79:AOnePermissions:1.0.1-alpha")
+    implementation("com.github.Akshay-kumar79:AOnePermissions:1.0.2-alpha")
 }
