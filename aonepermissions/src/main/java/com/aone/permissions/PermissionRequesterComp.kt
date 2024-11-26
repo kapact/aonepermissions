@@ -11,7 +11,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat
 
 @Composable
-fun rememberLocationPermissionRequester(
+fun rememberPermissionRequester(
     permission: String
 ): PermissionRequester {
 

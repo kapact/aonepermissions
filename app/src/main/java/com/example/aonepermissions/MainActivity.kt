@@ -56,6 +56,7 @@ fun Main(modifier: Modifier = Modifier) {
         Button(
             onClick = {
                 permissionRequester.requestAndExecute {
+                    // Do your work with required permission
                     Toast.makeText(context, "Do your work now", Toast.LENGTH_SHORT).show()
                 }
             }
