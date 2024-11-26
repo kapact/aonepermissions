@@ -45,13 +45,12 @@ dependencies {
     implementation(libs.androidx.material3)
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            register<MavenPublication>("release"){
-                groupId = "com.aone"
-                artifactId = "aone.permissions"
-                version = "1.0-alpha"
+
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            afterEvaluate{
+                from(components["release"])
             }
         }
     }
