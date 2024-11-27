@@ -2,7 +2,7 @@
 
 ## Dependency setup
 
-Add it in your projects settings.gradle.kts
+Add jitpack in your projects settings.gradle.kts
 ```
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
@@ -27,15 +27,13 @@ Add permission in your manifest file
 <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 ```
 
-Initialize permission requester
+Initialize permission requester. Safely run your code with the required permission. 
+Library handles permission and permission rational within these few lines of code.
 ```
 val permissionRequester = rememberPermissionRequester(
     Manifest.permission.POST_NOTIFICATIONS
 )
-```
 
-Safely run your code with the required permission
-```
 Button(
     onClick = {
         permissionRequester.requestAndExecute {
