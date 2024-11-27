@@ -48,4 +48,6 @@ Button(
 }
 ```
 
+Feel free to contribute to this repository. You are always welcomed.
+
 **THANK YOU**
