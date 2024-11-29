@@ -9,7 +9,9 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
@@ -19,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.aone.permissions.ui.SafeBox
 import com.aone.permissions.ui.rememberPermissionRequester
 import com.example.aonepermissions.ui.theme.AOnePermissionsTheme
@@ -59,6 +62,8 @@ fun Main(modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
+        // Execute code with required permission.
         Button(
             onClick = {
                 permissionRequester.safeExecute {
@@ -70,6 +75,18 @@ fun Main(modifier: Modifier = Modifier) {
             Text("Do work")
         }
 
+        // Just request permission.
+        Spacer(Modifier.height(24.dp))
+        Button(
+            onClick = {
+                permissionRequester.request()
+            }
+        ) {
+            Text("Request permission")
+        }
+
+        // Show content only when permission in granted.
+        Spacer(Modifier.height(24.dp))
         SafeBox(permissionRequester) {
             Text("You have the permission")
         }

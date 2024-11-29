@@ -8,9 +8,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Lifecycle
 import com.aone.permissions.PermissionRequester
 import com.aone.permissions.util.findActivity
 import com.aone.permissions.util.openAppSettings
@@ -78,13 +79,30 @@ fun rememberPermissionRequester(
         }
     }
 
-    LaunchedEffect(Unit) {
+    val checkAndSetPermission = {
         permissionRequester.setHasPermission(
             ContextCompat.checkSelfPermission(
                 context,
                 permission
             ) == PackageManager.PERMISSION_GRANTED
         )
+    }
+
+    LaunchedEffect(Unit) {
+        checkAndSetPermission()
+    }
+
+    val lifecycleOwner = LocalLifecycleOwner.current
+    val lifecycleState by lifecycleOwner.lifecycle.currentStateFlow.collectAsState()
+
+    LaunchedEffect(lifecycleState) {
+        when (lifecycleState) {
+            Lifecycle.State.RESUMED -> {
+                checkAndSetPermission()
+            }
+
+            else -> Unit
+        }
     }
 
     if (isReRequestDialogVisible) {
