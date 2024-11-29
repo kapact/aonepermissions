@@ -7,7 +7,8 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -18,7 +19,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import com.aone.permissions.rememberPermissionRequester
+import com.aone.permissions.ui.SafeBox
+import com.aone.permissions.ui.rememberPermissionRequester
 import com.example.aonepermissions.ui.theme.AOnePermissionsTheme
 
 class MainActivity : ComponentActivity() {
@@ -52,16 +54,24 @@ fun Main(modifier: Modifier = Modifier) {
         Manifest.permission.POST_NOTIFICATIONS
     )
 
-    Box(modifier = modifier, contentAlignment = Alignment.Center) {
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         Button(
             onClick = {
-                permissionRequester.requestAndExecute {
+                permissionRequester.safeExecute {
                     // Do your work with required permission
                     Toast.makeText(context, "Do your work now", Toast.LENGTH_SHORT).show()
                 }
             }
         ) {
             Text("Do work")
+        }
+
+        SafeBox(permissionRequester) {
+            Text("You have the permission")
         }
     }
 }

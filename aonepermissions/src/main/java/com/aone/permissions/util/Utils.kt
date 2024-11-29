@@ -1,4 +1,4 @@
-package com.aone.permissions
+package com.aone.permissions.util
 
 import android.app.Activity
 import android.content.Context
@@ -8,7 +8,7 @@ import android.net.Uri
 import android.provider.Settings
 import androidx.activity.ComponentActivity
 
-fun Activity.openAppSettings() {
+internal fun Activity.openAppSettings() {
     Intent(
         Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
         Uri.fromParts("package", packageName, null)
@@ -16,7 +16,7 @@ fun Activity.openAppSettings() {
 }
 
 
-fun Context.findActivity(): ComponentActivity? = when (this) {
+internal fun Context.findActivity(): ComponentActivity? = when (this) {
     is ComponentActivity -> this
     is ContextWrapper -> baseContext.findActivity()
     else -> null

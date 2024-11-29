@@ -1,4 +1,4 @@
-package com.aone.permissions
+package com.aone.permissions.ui
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -17,8 +17,8 @@ import androidx.compose.ui.unit.dp
 
 
 @Composable
-fun PermissionDialog(
-    permissionTextProvider: PermissionTextProvider,
+internal fun PermissionDialog(
+    permissionRationalProvider: PermissionRationalProvider,
     isPermanentlyDeclined: Boolean,
     onDismiss: () -> Unit,
     onOkClick: () -> Unit,
@@ -61,7 +61,7 @@ fun PermissionDialog(
         },
         text = {
             Text(
-                text = permissionTextProvider.getDescription(
+                text = permissionRationalProvider.getDescription(
                     isPermanentlyDeclined = isPermanentlyDeclined
                 ),
                 fontWeight = FontWeight.W400
@@ -72,18 +72,7 @@ fun PermissionDialog(
     )
 }
 
-interface PermissionTextProvider {
+interface PermissionRationalProvider {
+    fun getTitle(isPermanentlyDeclined: Boolean): String
     fun getDescription(isPermanentlyDeclined: Boolean): String
-}
-
-class MyPermissionTextProvider : PermissionTextProvider {
-    override fun getDescription(isPermanentlyDeclined: Boolean): String {
-        return if (isPermanentlyDeclined) {
-            "It seems you permanently declined this permission. " +
-                    "You can go to the app settings to grant it."
-        } else {
-            "This app needs to access this permission to use this" +
-                    " feature."
-        }
-    }
 }
