@@ -54,8 +54,8 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    implementation(project(":aonepermissions"))
+//    implementation(project(":aonepermissions"))
 
     //noinspection UseTomlInstead
-//    implementation("com.github.Akshay-kumar79:AOnePermissions:1.0.2-alpha")
+    implementation("io.github.kapact:aonepermissions:1.0.0")
 }
