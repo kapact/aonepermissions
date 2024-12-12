@@ -3,20 +3,11 @@
 ## Dependency setup
 
 Add jitpack in your projects settings.gradle.kts
-```java
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-      mavenCentral()
-      maven { setUrl("<https://jitpack.io>") }
-    }
-}
-```
 
 Add the dependency
 ```java
 dependencies {
-    implementation("com.github.Akshay-kumar79:AOnePermissions:1.1.0-alpha")
+    implementation("io.github.kapact:aonepermissions:1.0.0")
 }
 ```
 
@@ -56,9 +47,9 @@ SafeBox(permissionRequester) {
 ```
 
 ## Example
-Check out this [example](https://github.com/Akshay-kumar79/AOnePermissions/blob/main/app/src/main/java/com/example/aonepermissions/MainActivity.kt) for library usage.  
+Check out this [example](https://github.com/kapact/aonepermissions/blob/main/app/src/main/java/com/example/aonepermissions/MainActivity.kt) for library usage.  
 
 ## Contribution
-Feel free to contribute to this repository. You are always welcomed.
+Feel free to contribute to this repository. You are always welcome.
 
 **THANK YOU**
