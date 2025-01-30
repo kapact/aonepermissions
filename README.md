@@ -7,7 +7,7 @@ Add jitpack in your projects settings.gradle.kts
 Add the dependency
 ```java
 dependencies {
-    implementation("io.github.kapact:aonepermissions:1.0.0")
+    implementation("io.github.kapact:aonepermissions:1.0.1")
 }
 ```
 
