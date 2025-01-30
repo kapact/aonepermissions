@@ -52,7 +52,7 @@ mavenPublishing {
     coordinates(
         groupId = "io.github.kapact",
         artifactId = "aonepermissions",
-        version = "1.0.0"
+        version = "1.0.1"
     )
 
     // Configure POM metadata for the published artifact

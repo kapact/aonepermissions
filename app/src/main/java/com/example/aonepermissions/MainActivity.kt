@@ -22,7 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.aone.permissions.ui.SafeBox
+import com.aone.permissions.hasPermission
 import com.aone.permissions.ui.rememberPermissionRequester
 import com.example.aonepermissions.ui.theme.AOnePermissionsTheme
 
@@ -87,8 +87,11 @@ fun Main(modifier: Modifier = Modifier) {
 
         // Show content only when permission in granted.
         Spacer(Modifier.height(24.dp))
-        SafeBox(permissionRequester) {
+        if (permissionRequester.hasPermission()){
             Text("You have the permission")
         }
+//        SafeBox(permissionRequester) {
+//            Text("You have the permission")
+//        }
     }
 }
